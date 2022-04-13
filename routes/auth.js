@@ -6,6 +6,13 @@ const User = require("../models/User")
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { validate } = require('../models/User')
+const auth = require('../middlewares/loginRequire');
+
+//testroute for jwt 
+
+router.get("/test", auth, (req, res) => {
+    res.status(200).json("Hello world")
+})
 //REGISTER
 router.post("/register", async (req, res) => {
     try {
