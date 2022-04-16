@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const app = express()
 const authRoute = require('./routes/auth')
-
+const userRoute = require('./routes/users')
 //middleware
 dotenv.config()
 app.use(express.json())
@@ -20,6 +20,6 @@ mongoose.connect(process.env.MONGO_DB, {
 
 //routes
 app.use('/api/auth', authRoute)
-
+app.use('/api/users', userRoute)
 //server
 app.listen(process.env.PORT || '5000', () => console.log(`Server runing on port 5000`))      
